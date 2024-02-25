@@ -4,10 +4,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     
     // Set up the email parameters
-    $to = "your@email.com"; // Change this to your email address
+    $to = "nikitabains71@gmail.com"; // Change this to your email address
     $subject = "New registration";
     $message = "A new user has registered with the email: $email";
-    $headers = "From: your@email.com"; // Change this to your email address
+    $headers = "From: amanpaul84@gmail.com"; // Change this to your email address
 
     // Send the email
     if (mail($to, $subject, $message, $headers)) {
