@@ -41,6 +41,11 @@
             color: #ffffff; /* White text */
             cursor: pointer;
         }
+
+        .meme {
+            margin-top: 20px;
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -49,17 +54,33 @@
     </header>
     
     <main>
-        <form>
-            <input type="text" placeholder="Enter text for the meme">
+        <form id="memeForm">
+            <input type="text" id="memeText" placeholder="Enter text for the meme">
             <br>
-            <input type="file" accept="image/*">
+            <input type="file" id="memeImage" accept="image/*">
             <br>
-            <button type="submit">Generate Meme</button>
+            <button type="button" onclick="generateMeme()">Generate Meme</button>
         </form>
+        
+        <img src="" id="generatedMeme" class="meme" style="display: none;">
+        <a href="" download="meme.jpg" id="downloadButton" style="display: none;">
+            <button>Download Meme</button>
+        </a>
     </main>
     
     <footer>
         <p>&copy; 2024 Meme Generator</p>
     </footer>
+
+    <script>
+        function generateMeme() {
+            // Replace this with your actual meme generation logic
+            // For demonstration, just showing a placeholder image
+            document.getElementById("generatedMeme").src = "https://via.placeholder.com/400";
+            document.getElementById("generatedMeme").style.display = "block";
+            document.getElementById("downloadButton").href = "https://via.placeholder.com/400";
+            document.getElementById("downloadButton").style.display = "inline";
+        }
+    </script>
 </body>
 </html>
