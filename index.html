@@ -77,16 +77,16 @@
 
     <script>
         function generateMeme() {
-            // Replace this with your actual meme generation logic
-            // For demonstration, just showing a placeholder image
             var memeText = document.getElementById("memeText").value;
             var memeImage = document.getElementById("memeImage").value; // Here you can get the uploaded image
-            
+
             // For now, just displaying a placeholder image
-            document.getElementById("generatedMeme").src = "https://via.placeholder.com/400";
-            
+            var generatedMemeURL = "https://via.placeholder.com/400"; // Placeholder URL
+
+            document.getElementById("generatedMeme").src = generatedMemeURL;
+
             document.getElementById("memeDisplay").style.display = "block";
-            document.getElementById("downloadButton").href = "https://via.placeholder.com/400"; // Placeholder link
+            document.getElementById("downloadButton").href = generatedMemeURL; // Set the href attribute to the generated meme URL
         }
     </script>
 </body>
