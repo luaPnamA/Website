@@ -1,11 +1,15 @@
-<!-- meme_form.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aman Website - Meme Generator</title>
-    <!-- Your CSS and JavaScript -->
+    <!-- Your CSS -->
+    <style>
+        img#uploadedImage {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,7 +20,7 @@
         <form action="generate_meme.php" method="post" enctype="multipart/form-data">
             <input type="text" name="memeText" placeholder="Enter text for the meme">
             <br>
-            <input type="file" name="memeImage" accept="image/*">
+            <input type="file" name="memeImage" accept="image/*" onchange="previewImage()">
             <br>
             <button type="submit">Generate Meme</button>
         </form>
@@ -27,10 +31,40 @@
                 <button>Download Meme</button>
             </a>
         </div>
+        
+        <!-- Display uploaded image -->
+        <div id="uploadedImageContainer" style="display: none;">
+            <h2>Uploaded Image:</h2>
+            <img src="" id="uploadedImage">
+        </div>
     </main>
     
     <footer>
         <p>&copy; 2024 Aman Website - Meme Generator</p>
     </footer>
+
+    <!-- Your JavaScript -->
+    <script>
+        function previewImage() {
+            var uploadedImage = document.getElementById('uploadedImage');
+            var uploadedImageContainer = document.getElementById('uploadedImageContainer');
+            var memeDisplay = document.getElementById('memeDisplay');
+            
+            var file = document.querySelector('input[type=file]').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                uploadedImage.src = reader.result;
+                uploadedImageContainer.style.display = 'block';
+                memeDisplay.style.display = 'block';
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                uploadedImage.src = "";
+            }
+        }
+    </script>
 </body>
 </html>
