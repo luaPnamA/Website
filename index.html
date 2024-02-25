@@ -1,72 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aman Website - Meme Generator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEight Out Clothing</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px 40px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .header-links {
+      display: flex;
+    }
+
+    .header-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .hero-section {
+      background-color: #fff;
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .hero-text {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .hero-button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-button:hover {
+      background-color: #555;
+    }
+
+    .countdown-timer {
+      font-size: 24px;
+      margin-top: 50px;
+    }
+
+    .register-form {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .register-form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .register-form input[type="email"] {
+      width: 300px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .register-form button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .register-form button:hover {
+      background-color: #555;
+    }
+
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Aman Website - Meme Generator</h1>
-    </header>
-    
-    <main>
-        <form action="#" method="post" enctype="multipart/form-data">
-            <input type="file" name="memeImage" id="memeImage" accept="image/*" onchange="previewImage()">
-            <br>
-            <input type="text" id="memeText" placeholder="Enter text for the meme">
-            <br>
-            <button type="button" onclick="generateMeme()">Generate Meme</button>
-        </form>
-        
-        <div id="uploadedImageContainer" style="display: none;">
-            <h2>Uploaded Image:</h2>
-            <img src="" id="uploadedImage" style="max-width: 100%;">
-        </div>
+  <header>
+    <div class="logo">NEight Out Clothing</div>
+    <div class="header-links">
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Login</a>
+    </div>
+  </header>
+  
+  <div class="hero-section">
+    <h1 class="hero-text">Get Ready For The Drop</h1>
+    <a href="#" class="hero-button">Shop Now</a>
+    <div id="countdown" class="countdown-timer"></div>
+  </div>
 
-        <div id="memeDisplay" style="display: none;">
-            <h2>Generated Meme:</h2>
-            <div style="position: relative; display: inline-block;">
-                <img src="" id="generatedMeme" style="max-width: 100%;">
-                <span id="memeTextOverlay" style="position: absolute; top: 10px; left: 10px; color: white; font-size: 24px;"></span>
-            </div>
-            <br>
-            <a href="#" id="downloadButton" download="generated-meme.jpg">
-                <button>Download Meme</button>
-            </a>
-        </div>
-    </main>
+  <form class="register-form" action="submit_email.php" method="post">
+    <label for="email">Register your email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Register</button>
+  </form>
 
-    <footer>
-        <p>&copy; 2024 Aman Website - Meme Generator</p>
-    </footer>
-
-    <script>
-        function previewImage() {
-            var uploadedImage = document.getElementById('uploadedImage');
-            var file = document.getElementById('memeImage').files[0];
-            var reader = new FileReader();
-
-            reader.onload = function() {
-                uploadedImage.src = reader.result;
-                document.getElementById('uploadedImageContainer').style.display = 'block';
-            }
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function generateMeme() {
-            var uploadedImageSrc = document.getElementById('uploadedImage').src;
-            var generatedMeme = document.getElementById('generatedMeme');
-            var memeText = document.getElementById('memeText').value;
-            var memeTextOverlay = document.getElementById('memeTextOverlay');
-            
-            generatedMeme.src = uploadedImageSrc;
-            memeTextOverlay.textContent = memeText;
-            document.getElementById('memeDisplay').style.display = 'block';
-        }
-    </script>
+  <footer class="footer">
+    <p>Email: info@neightoutclothing.com</p>
+    <p>Contact: +1 123-456-7890</p>
+    <p>Copyright © 2024 NEight Out Clothing</p>
+  </footer>
+  
+  <script>
+    // Countdown Timer
+    var countDownDate = new Date("Dec 20, 2024 00:00:00").getTime();
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
 </body>
-</html> 
+</html>
