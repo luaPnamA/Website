@@ -1,53 +1,11 @@
+<!-- meme_form.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aman Website - Meme Generator</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #ffffff; /* White background */
-            color: #000000; /* Black text */
-        }
-        
-        header, footer {
-            background-color: #000000; /* Black header and footer */
-            padding: 20px;
-            text-align: center;
-            color: #ffffff; /* White text */
-        }
-        
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-        
-        input[type="text"],
-        input[type="file"] {
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            border: 1px solid #000000; /* Black border */
-        }
-        
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            border-radius: 20px; /* Rounded corners */
-            border: none;
-            background-color: #000000; /* Black button */
-            color: #ffffff; /* White text */
-            cursor: pointer;
-        }
-
-        .meme {
-            margin-top: 20px;
-            max-width: 100%;
-        }
-    </style>
+    <!-- Your CSS and JavaScript -->
 </head>
 <body>
     <header>
@@ -55,12 +13,12 @@
     </header>
     
     <main>
-        <form id="memeForm">
-            <input type="text" id="memeText" placeholder="Enter text for the meme">
+        <form action="generate_meme.php" method="post" enctype="multipart/form-data">
+            <input type="text" name="memeText" placeholder="Enter text for the meme">
             <br>
-            <input type="file" id="memeImage" accept="image/*">
+            <input type="file" name="memeImage" accept="image/*">
             <br>
-            <button type="button" onclick="generateMeme()">Generate Meme</button>
+            <button type="submit">Generate Meme</button>
         </form>
         
         <div id="memeDisplay" style="display: none;">
@@ -74,20 +32,5 @@
     <footer>
         <p>&copy; 2024 Aman Website - Meme Generator</p>
     </footer>
-
-    <script>
-        function generateMeme() {
-            var memeText = document.getElementById("memeText").value;
-            var memeImage = document.getElementById("memeImage").value; // Here you can get the uploaded image
-
-            // For now, just displaying a placeholder image
-            var generatedMemeURL = "https://via.placeholder.com/400"; // Placeholder URL
-
-            document.getElementById("generatedMeme").src = generatedMemeURL;
-
-            document.getElementById("memeDisplay").style.display = "block";
-            document.getElementById("downloadButton").href = generatedMemeURL; // Set the href attribute to the generated meme URL
-        }
-    </script>
 </body>
 </html>
