@@ -9,7 +9,225 @@
         img#uploadedImage {
             width: 100%;
         }
+        .<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman Website - Meme Generator</title>
+    <!-- Your CSS -->
+    <style>
+        img#uploadedImage {
+            width: 100%;
+        }
         .output {
+            margin-top: 20px;
+        }
+        .output img {
+            max-width: 100%;
+            display: block;
+            margin-top: 10px;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Aman Website - Meme Generator</h1>
+    </header>
+    
+    <main>
+        <form action="generate_meme.php" method="post" enctype="multipart/form-data">
+            <input type="text" name="memeText" placeholder="Enter text for the meme">
+            <br>
+            <input type="file" name="memeImage" accept="image/*" onchange="previewImage()">
+            <br>
+            <button type="submit">Generate Meme</button>
+        </form>
+        
+        <div id="memeDisplay" style="display: none;">
+            <img src="" id="generatedMeme" class="meme">
+            <a href="" id="downloadButton" download="meme.jpg">
+                <button>Download Meme</button>
+            </a>
+        </div>
+        
+        <!-- Display uploaded image -->
+        <div id="uploadedImageContainer" style="display: none;">
+            <h2>Uploaded Image:</h2>
+            <img src="" id="uploadedImage">
+        </div>
+
+        <!-- Placeholder for displaying the generated meme -->
+        <div class="output">
+            <h2>Your Output:</h2>
+            <img src="" id="outputImage" alt="Generated Meme">
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Aman Website - Meme Generator</p>
+        <p id="randomWord"></p>
+    </footer>
+
+    <!-- Your JavaScript -->
+    <script>
+        // Function to generate a random word
+        function generateRandomWord() {
+            var words = ["apple", "banana", "carrot", "dog", "elephant", "frog", "giraffe", "horse", "iguana", "jellyfish"];
+            var randomIndex = Math.floor(Math.random() * words.length);
+            return words[randomIndex];
+        }
+
+        // Function to display generated meme
+        function displayGeneratedMeme(url) {
+            var outputImage = document.getElementById('outputImage');
+            outputImage.src = url;
+            outputImage.style.display = 'block';
+        }
+
+        // Function to preview uploaded image
+        function previewImage() {
+            var uploadedImage = document.getElementById('uploadedImage');
+            var uploadedImageContainer = document.getElementById('uploadedImageContainer');
+            var memeDisplay = document.getElementById('memeDisplay');
+            
+            var file = document.querySelector('input[type=file]').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                uploadedImage.src = reader.result;
+                uploadedImageContainer.style.display = 'block';
+                memeDisplay.style.display = 'block';
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                uploadedImage.src = "";
+            }
+        }
+
+        // Set a random word in the footer on page load
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman Website - Meme Generator</title>
+    <!-- Your CSS -->
+    <style>
+        img#uploadedImage {
+            width: 100%;
+        }
+        .output {
+            margin-top: 20px;
+        }
+        .output img {
+            max-width: 100%;
+            display: block;
+            margin-top: 10px;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Aman Website - Meme Generator</h1>
+    </header>
+    
+    <main>
+        <form action="generate_meme.php" method="post" enctype="multipart/form-data">
+            <input type="text" name="memeText" placeholder="Enter text for the meme">
+            <br>
+            <input type="file" name="memeImage" accept="image/*" onchange="previewImage()">
+            <br>
+            <button type="submit">Generate Meme</button>
+        </form>
+        
+        <div id="memeDisplay" style="display: none;">
+            <img src="" id="generatedMeme" class="meme">
+            <a href="" id="downloadButton" download="meme.jpg">
+                <button>Download Meme</button>
+            </a>
+        </div>
+        
+        <!-- Display uploaded image -->
+        <div id="uploadedImageContainer" style="display: none;">
+            <h2>Uploaded Image:</h2>
+            <img src="" id="uploadedImage">
+        </div>
+
+        <!-- Placeholder for displaying the generated meme -->
+        <div class="output">
+            <h2>Your Output:</h2>
+            <img src="" id="outputImage" alt="Generated Meme">
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Aman Website - Meme Generator</p>
+        <p id="randomWord"></p>
+    </footer>
+
+    <!-- Your JavaScript -->
+    <script>
+        // Function to generate a random word
+        function generateRandomWord() {
+            var words = ["apple", "banana", "carrot", "dog", "elephant", "frog", "giraffe", "horse", "iguana", "jellyfish"];
+            var randomIndex = Math.floor(Math.random() * words.length);
+            return words[randomIndex];
+        }
+
+        // Function to display generated meme
+        function displayGeneratedMeme(url) {
+            var outputImage = document.getElementById('outputImage');
+            outputImage.src = url;
+            outputImage.style.display = 'block';
+        }
+
+        // Function to preview uploaded image
+        function previewImage() {
+            var uploadedImage = document.getElementById('uploadedImage');
+            var uploadedImageContainer = document.getElementById('uploadedImageContainer');
+            var memeDisplay = document.getElementById('memeDisplay');
+            
+            var file = document.querySelector('input[type=file]').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                uploadedImage.src = reader.result;
+                uploadedImageContainer.style.display = 'block';
+                memeDisplay.style.display = 'block';
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                uploadedImage.src = "";
+            }
+        }
+
+        // Set a random word in the footer on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            var randomWord = generateRandomWord();
+            document.getElementById('randomWord').textContent = "Random Word: " + randomWord;
+        });
+    </script>
+</body>
+</html>document.addEventListener('DOMContentLoaded', function() {
+            var randomWord = generateRandomWord();
+            document.getElementById('randomWord').textContent = "Random Word: " + randomWord;
+        });
+    </script>
+</body>
+</html>output {
             margin-top: 20px;
         }
         .output img {
