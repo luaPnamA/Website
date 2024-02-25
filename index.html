@@ -1,64 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meme Maker</title>
-<style>
-  /* Embedded CSS styles */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-  }
-  .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  #memeOutput {
-    margin-top: 20px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* White background */
+            color: #ffffff; /* White text */
+        }
+        
+        header, footer {
+            background-color: #000000; /* Black header and footer */
+            padding: 20px;
+            text-align: center;
+        }
+        
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #000000; /* Black border */
+        }
+        
+        input[type="file"] {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #000000; /* Black border */
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 20px; /* Rounded corners */
+            border: none;
+            background-color: #000000; /* Black button */
+            color: #ffffff; /* White text */
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-
-<div class="container">
-  <h1>Meme Maker</h1>
-  <form id="memeForm">
-    <label for="imageUpload">Upload Image:</label>
-    <input type="file" id="imageUpload" accept="image/*" required><br><br>
-    <label for="textInput">Enter Text:</label>
-    <input type="text" id="textInput" required><br><br>
-    <button type="submit">Create Meme</button>
-  </form>
-  <div id="memeOutput"></div>
-</div>
-
-<script>
-  // Embedded JavaScript
-  document.getElementById('memeForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const image = document.getElementById('imageUpload').files[0];
-    const text = document.getElementById('textInput').value;
+    <header>
+        <h1>Meme Generator</h1>
+    </header>
     
-    // Code to process image and text to create a meme goes here
+    <main>
+        <form>
+            <input type="text" placeholder="Enter text for the meme">
+            <br>
+            <input type="file" accept="image/*">
+            <br>
+            <button type="submit">Generate Meme</button>
+        </form>
+    </main>
     
-    const memeOutput = document.getElementById('memeOutput');
-    memeOutput.innerHTML = `<img src="placeholder.jpg" alt="Generated Meme">`; // Placeholder for generated meme
-    
-    // Download button for the generated meme
-    const downloadButton = document.createElement('a');
-    downloadButton.setAttribute('href', 'placeholder.jpg'); // Replace with the URL of the generated meme
-    downloadButton.setAttribute('download', 'meme.jpg');
-    downloadButton.innerText = 'Download Meme';
-    memeOutput.appendChild(downloadButton);
-  });
-</script>
-
+    <footer>
+        <p>&copy; 2024 Meme Generator</p>
+    </footer>
 </body>
 </html>
