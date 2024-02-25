@@ -17,6 +17,10 @@
             display: block;
             margin-top: 10px;
         }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -55,10 +59,26 @@
     
     <footer>
         <p>&copy; 2024 Aman Website - Meme Generator</p>
+        <p id="randomWord"></p>
     </footer>
 
     <!-- Your JavaScript -->
     <script>
+        // Function to generate a random word
+        function generateRandomWord() {
+            var words = ["apple", "banana", "carrot", "dog", "elephant", "frog", "giraffe", "horse", "iguana", "jellyfish"];
+            var randomIndex = Math.floor(Math.random() * words.length);
+            return words[randomIndex];
+        }
+
+        // Function to display generated meme
+        function displayGeneratedMeme(url) {
+            var outputImage = document.getElementById('outputImage');
+            outputImage.src = url;
+            outputImage.style.display = 'block';
+        }
+
+        // Function to preview uploaded image
         function previewImage() {
             var uploadedImage = document.getElementById('uploadedImage');
             var uploadedImageContainer = document.getElementById('uploadedImageContainer');
@@ -79,13 +99,12 @@
                 uploadedImage.src = "";
             }
         }
-        
-        // Function to display generated meme
-        function displayGeneratedMeme(url) {
-            var outputImage = document.getElementById('outputImage');
-            outputImage.src = url;
-            outputImage.style.display = 'block';
-        }
+
+        // Set a random word in the footer on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            var randomWord = generateRandomWord();
+            document.getElementById('randomWord').textContent = "Random Word: " + randomWord;
+        });
     </script>
 </body>
 </html>
