@@ -9,6 +9,14 @@
         img#uploadedImage {
             width: 100%;
         }
+        .output {
+            margin-top: 20px;
+        }
+        .output img {
+            max-width: 100%;
+            display: block;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -37,6 +45,12 @@
             <h2>Uploaded Image:</h2>
             <img src="" id="uploadedImage">
         </div>
+
+        <!-- Placeholder for displaying the generated meme -->
+        <div class="output">
+            <h2>Your Output:</h2>
+            <img src="" id="outputImage" alt="Generated Meme">
+        </div>
     </main>
     
     <footer>
@@ -64,6 +78,13 @@
             } else {
                 uploadedImage.src = "";
             }
+        }
+        
+        // Function to display generated meme
+        function displayGeneratedMeme(url) {
+            var outputImage = document.getElementById('outputImage');
+            outputImage.src = url;
+            outputImage.style.display = 'block';
         }
     </script>
 </body>
