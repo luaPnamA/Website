@@ -14,6 +14,8 @@
         <form action="#" method="post" enctype="multipart/form-data">
             <input type="file" name="memeImage" id="memeImage" accept="image/*" onchange="previewImage()">
             <br>
+            <input type="text" id="memeText" placeholder="Enter text for the meme">
+            <br>
             <button type="button" onclick="generateMeme()">Generate Meme</button>
         </form>
         
@@ -24,7 +26,10 @@
 
         <div id="memeDisplay" style="display: none;">
             <h2>Generated Meme:</h2>
-            <img src="" id="generatedMeme" style="max-width: 100%;">
+            <div style="position: relative; display: inline-block;">
+                <img src="" id="generatedMeme" style="max-width: 100%;">
+                <span id="memeTextOverlay" style="position: absolute; top: 10px; left: 10px; color: white; font-size: 24px;"></span>
+            </div>
             <br>
             <a href="#" id="downloadButton" download="generated-meme.jpg">
                 <button>Download Meme</button>
@@ -55,7 +60,11 @@
         function generateMeme() {
             var uploadedImageSrc = document.getElementById('uploadedImage').src;
             var generatedMeme = document.getElementById('generatedMeme');
+            var memeText = document.getElementById('memeText').value;
+            var memeTextOverlay = document.getElementById('memeTextOverlay');
+            
             generatedMeme.src = uploadedImageSrc;
+            memeTextOverlay.textContent = memeText;
             document.getElementById('memeDisplay').style.display = 'block';
         }
     </script>
