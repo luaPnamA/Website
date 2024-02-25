@@ -1,6 +1,4 @@
 <?php
-// generate_meme.php
-
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get meme text from the form
@@ -29,15 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Add the text to the image
         imagettftext($image, $font_size, 0, $x, $y, $text_color, $font_path, $memeText);
 
-        // Save the generated meme image
-        $generatedMemeURL = "memes/generated_meme.jpg"; // Adjust the path as needed
-        imagejpeg($image, $generatedMemeURL);
+        // Output the image
+        header('Content-type: image/jpeg');
+        imagejpeg($image);
 
         // Free up memory
         imagedestroy($image);
-        
-        // Return the URL of the generated meme image
-        echo $generatedMemeURL;
     } else {
         // If no image is uploaded, return an error message
         echo "Error: No image uploaded!";
