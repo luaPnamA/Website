@@ -65,6 +65,14 @@
             margin-bottom: 10px;
         }
 
+        /* Button container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         /* Button styles */
         .button {
             padding: 10px 20px;
@@ -73,12 +81,12 @@
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
-            margin: 0 10px; /* Add margin between buttons */
+            margin: 0 10px 10px 10px; /* Add margin between buttons */
         }
 
         /* Spotify button styles */
         .spotify-button {
-            background-color: #1ed760; /* Spotify green */
+            background-color: #1ed760 !important; /* Spotify green */
             color: #fff;
         }
 
@@ -88,7 +96,7 @@
 
         /* Apple Music button styles */
         .apple-music-button {
-            background-color: #ff4f63; /* Apple Music pink */
+            background-color: #ff4f63 !important; /* Apple Music pink */
             color: #fff;
         }
 
@@ -119,18 +127,23 @@
         <div class="slogan">You will need a gym body to wear Lhire Clothing</div>
         <div class="search-container">
             <input type="text" class="search-bar" placeholder="Search YouTube..." onkeypress="handleKeyPress(event)">
-            <button class="button" onclick="openSpotify()">Spotify</button>
-            <button class="button" onclick="openAppleMusic()">Apple Music</button>
+        </div>
+        <div class="button-container">
+            
             <button class="button" onclick="surpriseMe()">Surprise</button>
+        </div>
+        <div class="button-container">
+            <button class="button spotify-button" onclick="openSpotify()">Spotify</button>
+            <button class="button apple-music-button" onclick="openAppleMusic()">Apple Music</button>
         </div>
 
         <div class="instructions">
             <h2>How to use Lhire Gym:</h2>
             <ol>
-                <li>Enter your desired search query in the search bar and press Enter to search on YouTube.</li>
-                <li>Click the "Spotify" button to listen to the gym playlist on Spotify (if you have the Spotify app installed).</li>
-                <li>Click the "Apple Music" button to listen to the gym playlist on Apple Music (if you have the Apple Music app installed).</li>
-                <li>Alternatively, click the "Surprise" button to get a random workout video suggestion.</li>
+                <li>Enter your desired excercise in the search bar and press Enter on your keyboard to search on YouTube.</li>
+                <li>Click the "Spotify" button for a gym playlist on Spotify.</li>
+                <li>Click the "Apple Music" button for a gym playlist on Apple Music.</li>
+                <li>Click the "Surprise" button to get a random workout video suggestion.</li>
                 <li>If you're new to the gym or unsure where to start, consider browsing different types of workouts such as Upper Body Exercise, Cardio Workout, or Functional Training.</li>
             </ol>
         </div>
