@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Buddy</title>
+    <title>Lhire Gym</title>
     <style>
         /* Light Mode */
         body {
@@ -32,7 +32,24 @@
 
         /* Title styles */
         .title {
-            font-size: 32px;
+            font-family: Papyrus, sans-serif; /* Use Copperplate font */
+            font-size: 50px; /* Bigger font size */
+            font-weight: bold; /* Bold font weight */
+            margin-bottom: 10px;
+        }
+
+        /* Slogan styles */
+        .slogan {
+            font-family: Papyrus, sans-serif; /* Use Papyrus font */
+            font-size: 18px; /* Font size for the slogan */
+            margin-bottom: 20px;
+        }
+
+        /* Search bar container */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 20px;
         }
 
@@ -43,34 +60,80 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-bottom: 20px;
             box-sizing: border-box;
             font-size: 16px;
+            margin-bottom: 10px;
         }
 
         /* Button styles */
         .button {
-            background-color: #e50914; /* Netflix red */
-            color: #fff;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
+            margin: 0 10px; /* Add margin between buttons */
         }
 
-        .button:hover {
-            background-color: #b2070d; /* Darker Netflix red on hover */
+        /* Spotify button styles */
+        .spotify-button {
+            background-color: #1ed760; /* Spotify green */
+            color: #fff;
+        }
+
+        .spotify-button:hover {
+            background-color: #15ab4e; /* Darker green on hover */
+        }
+
+        /* Apple Music button styles */
+        .apple-music-button {
+            background-color: #ff4f63; /* Apple Music pink */
+            color: #fff;
+        }
+
+        .apple-music-button:hover {
+            background-color: #d14456; /* Darker pink on hover */
+        }
+
+        /* Instructions styles */
+        .instructions {
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .instructions h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            font-size: 16px;
+            margin-left: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="title">Gym Buddy</div>
-        <input type="text" class="search-bar" placeholder="Search YouTube...">
-        <button class="button" onclick="searchYouTube()">Search</button>
-        <button class="button" onclick="surpriseMe()">Surprise</button>
+        <div class="title">Lhire Gym</div>
+        <div class="slogan">You will need a gym body to wear Lhire Clothing</div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search YouTube..." onkeypress="handleKeyPress(event)">
+            <button class="button" onclick="openSpotify()">Spotify</button>
+            <button class="button" onclick="openAppleMusic()">Apple Music</button>
+            <button class="button" onclick="surpriseMe()">Surprise</button>
+        </div>
+
+        <div class="instructions">
+            <h2>How to use Lhire Gym:</h2>
+            <ol>
+                <li>Enter your desired search query in the search bar and press Enter to search on YouTube.</li>
+                <li>Click the "Spotify" button to listen to the gym playlist on Spotify (if you have the Spotify app installed).</li>
+                <li>Click the "Apple Music" button to listen to the gym playlist on Apple Music (if you have the Apple Music app installed).</li>
+                <li>Alternatively, click the "Surprise" button to get a random workout video suggestion.</li>
+                <li>If you're new to the gym or unsure where to start, consider browsing different types of workouts such as Upper Body Exercise, Cardio Workout, or Functional Training.</li>
+            </ol>
+        </div>
     </div>
 
     <script>
@@ -80,13 +143,42 @@
             window.location.href = searchUrl;
         }
 
-        function surpriseMe() {
-    var randomTerms = ["Upper Body Exercise", "Lower Body Exercise", "Cardio Workout", "HIIT Workout", "Functional Training", "Flexibility Exercise", "CrossFit Workout", "Bodyweight Training", "Group Fitness Class", "Sport-Specific Training", "Recovery Workout"];
-    var randomIndex = Math.floor(Math.random() * randomTerms.length);
-    var searchUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(randomTerms[randomIndex]);
-    window.location.href = searchUrl;
-}
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                searchYouTube();
+            }
+        }
 
+        function openSpotify() {
+            // Try to open Spotify app first, if not available, open the web link
+            window.location.href = 'spotify://album/0hePnTldrfYjUvUhKrR79Y?si=IrlGR4YRTVy8rn9RZl57Ew';
+            setTimeout(function() {
+                window.location.href = 'https://open.spotify.com/album/0hePnTldrfYjUvUhKrR79Y?si=IrlGR4YRTVy8rn9RZl57Ew';
+            }, 100);
+        }
+
+        function openAppleMusic() {
+            // Try to open Apple Music app first, if not available, open the web link
+            window.location.href = 'music://music.apple.com/us/playlist/the-gainz-ultimate-gym-playlist/pl.u-MDAWvJjFWEXdEY';
+            setTimeout(function() {
+                window.location.href = 'https://music.apple.com/us/playlist/the-gainz-ultimate-gym-playlist/pl.u-MDAWvJjFWEXdEY';
+            }, 100);
+        }
+
+        function surpriseMe() {
+            var randomTerms = ["Upper Body Exercise", "Lower Body Exercise", "Cardio Workout", "HIIT Workout", "Functional Training", "Flexibility Exercise", "CrossFit Workout", "Bodyweight Training", "Group Fitness Class", "Sport-Specific Training", "Recovery Workout"];
+            var randomIndex = Math.floor(Math.random() * randomTerms.length);
+            var searchUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(randomTerms[randomIndex]);
+            
+            // Check if the user is using a browser
+            if (window.navigator.standalone === false || window.matchMedia('(display-mode: browser)').matches) {
+                // Open the search results in a new tab
+                window.open(searchUrl, '_blank');
+            } else {
+                // Open the search results in the same tab (for app)
+                window.location.href = searchUrl;
+            }
+        }
     </script>
 </body>
 </html>
