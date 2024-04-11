@@ -162,13 +162,24 @@
             }
         }
 
-        function openSpotify() {
-            // Try to open Spotify app first, if not available, open the web link
-            window.location.href = 'spotify://album/0hePnTldrfYjUvUhKrR79Y?si=IrlGR4YRTVy8rn9RZl57Ew';
-            setTimeout(function() {
-                window.location.href = 'https://open.spotify.com/album/0hePnTldrfYjUvUhKrR79Y?si=IrlGR4YRTVy8rn9RZl57Ew';
-            }, 100);
-        }
+      function openSpotify() {
+    // Try to open Spotify app first, if not available, open the web link
+    var spotifyAppUrl = 'spotify://album/0hePnTldrfYjUvUhKrR79Y?si=IrlGR4YRTVy8rn9RZl57Ew';
+    var spotifyWebUrl = 'https://open.spotify.com/album/0hePnTldrfYjUvUhKrR79Y?si=IrlGR4YRTVy8rn9RZl57Ew';
+
+    if (navigator.protocolHandler) {
+        navigator.protocolHandler.handleURL(spotifyAppUrl, function() {
+            // App supported, opened successfully
+        }, function() {
+            // App not supported, open web link
+            window.location.href = spotifyWebUrl;
+        });
+    } else {
+        // Fallback for browsers not supporting protocolHandler
+        window.location.href = spotifyWebUrl;
+    }
+}
+
 
         function openAppleMusic() {
             // Try to open Apple Music app first, if not available, open the web link
