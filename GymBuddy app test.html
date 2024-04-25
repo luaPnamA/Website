@@ -59,7 +59,10 @@
 </div>
 
 <script>
-    let allowedCalories = 1800;
+    let allowedCalories = localStorage.getItem("allowedCalories") || 1800;
+    let entryTimestamp = localStorage.getItem("entryTimestamp") || new Date().getTime();
+
+    document.getElementById("allowedCalories").textContent = allowedCalories;
 
     document.getElementById("entryButton").addEventListener("click", enterEntry);
 
@@ -71,7 +74,21 @@
         const remainingCalories = allowedCalories - parseInt(entry);
         document.getElementById("output").textContent = `You are currently allowed to consume ${remainingCalories} calories.`;
         allowedCalories = remainingCalories;
+        entryTimestamp = new Date().getTime();
+        localStorage.setItem("allowedCalories", allowedCalories);
+        localStorage.setItem("entryTimestamp", entryTimestamp);
+        document.getElementById("allowedCalories").textContent = allowedCalories;
     }
+
+    // Check if 24 hours have passed since the last entry and reset local storage if needed
+    window.onload = function() {
+        const now = new Date().getTime();
+        const twentyFourHoursInMilliseconds = 24 * 60 * 60 * 1000;
+        if (now - entryTimestamp >= twentyFourHoursInMilliseconds) {
+            localStorage.removeItem("allowedCalories");
+            localStorage.removeItem("entryTimestamp");
+        }
+    };
 </script>
 </body>
 </html>
