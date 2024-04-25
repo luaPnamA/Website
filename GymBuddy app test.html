@@ -1,208 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lhire Gym</title>
-    <style>
-        /* Light Mode */
-        body {
-            background-color: #f5f5f5; /* Light gray */
-            color: #333; /* Dark gray */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calorie Counter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-        /* Dark Mode */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #121212; /* Dark gray */
-                color: #fff; /* White */
-            }
-        }
+    .container {
+        text-align: center;
+    }
 
-        /* Container styles */
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            text-align: center;
-        }
+    h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
 
-        /* Title styles */
-        .title {
-            font-family: Papyrus, sans-serif; /* Use Copperplate font */
-            font-size: 50px; /* Bigger font size */
-            font-weight: bold; /* Bold font weight */
-            margin-bottom: 10px;
-        }
+    p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
 
-        /* Slogan styles */
-        .slogan {
-            font-family: Papyrus, sans-serif; /* Use Papyrus font */
-            font-size: 18px; /* Font size for the slogan */
-            margin-bottom: 20px;
-        }
+    #output {
+        font-size: 20px;
+        margin-top: 20px;
+    }
 
-        /* Search bar container */
-        .search-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #e50914;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+    }
 
-        /* Search bar styles */
-        .search-bar {
-            width: 100%;
-            max-width: 400px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        /* Button container */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        /* Button styles */
-        .button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-            margin: 0 10px 10px 10px; /* Add margin between buttons */
-        }
-
-        /* Spotify button styles */
-        .spotify-button {
-            background-color: #1ed760 !important; /* Spotify green */
-            color: #fff;
-        }
-
-        .spotify-button:hover {
-            background-color: #15ab4e; /* Darker green on hover */
-        }
-
-        /* Apple Music button styles */
-        .apple-music-button {
-            background-color: #ff4f63 !important; /* Apple Music pink */
-            color: #fff;
-        }
-
-        .apple-music-button:hover {
-            background-color: #d14456; /* Darker pink on hover */
-        }
-
-        /* Instructions styles */
-        .instructions {
-            margin-top: 50px;
-            text-align: left;
-        }
-
-        .instructions h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .instructions ol {
-            font-size: 16px;
-            margin-left: 20px;
-        }
-    </style>
+    button:hover {
+        background-color: #b2070e;
+    }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="title">Lhire Gym</div>
-        <div class="slogan">You will need a gym body to wear Lhire Clothing</div>
-        <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Search YouTube..." onkeypress="handleKeyPress(event)">
-        </div>
-        <div class="button-container">
-            
-            <button class="button" onclick="surpriseMe()">Surprise</button>
-        </div>
-        <div class="button-container">
-            <button class="button spotify-button" onclick="openSpotify()">Spotify</button>
-            <button class="button apple-music-button" onclick="openAppleMusic()">Apple Music</button>
-        </div>
+<div class="container">
+    <h1>Calorie Counter</h1>
+    <p>Your Allowed Calories of the day is <span id="allowedCalories">1800</span>.</p>
+    <p id="output"></p>
+    <button id="entryButton">Enter New Entry</button>
+</div>
 
-        <div class="instructions">
-            <h2>How to use Lhire Gym:</h2>
-            <ol>
-                <li>Enter your desired excercise in the search bar and press Enter on your keyboard to search on YouTube.</li>
-                <li>Click the "Spotify" button for a gym playlist on Spotify.</li>
-                <li>Click the "Apple Music" button for a gym playlist on Apple Music.</li>
-                <li>Click the "Surprise" button to get a random workout video suggestion.</li>
-                <li>If you're new to the gym or unsure where to start, consider browsing different types of workouts such as Upper Body Exercise, Cardio Workout, or Functional Training.</li>
-            </ol>
-        </div>
-    </div>
+<script>
+    let allowedCalories = 1800;
 
-    <script>
-        function searchYouTube() {
-            var searchTerm = document.querySelector('.search-bar').value;
-            var searchUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(searchTerm);
-            window.location.href = searchUrl;
+    document.getElementById("entryButton").addEventListener("click", enterEntry);
+
+    function enterEntry() {
+        const entry = prompt("Enter your calorie intake for the day:");
+        if (entry === null || entry === "") {
+            return; // User cancelled or entered empty input
         }
-
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                searchYouTube();
-            }
-        }
-
-      function openSpotify() {
-    // Try to open Spotify app first, if not available, open the web link
-    var spotifyAppUrl = 'spotify://album/0hePnTldrfYjUvUhKrR79Y?si=IrlGR4YRTVy8rn9RZl57Ew';
-    var spotifyWebUrl = 'https://open.spotify.com/album/0hePnTldrfYjUvUhKrR79Y?si=IrlGR4YRTVy8rn9RZl57Ew';
-
-    if (navigator.protocolHandler) {
-        navigator.protocolHandler.handleURL(spotifyAppUrl, function() {
-            // App supported, opened successfully
-        }, function() {
-            // App not supported, open web link
-            window.location.href = spotifyWebUrl;
-        });
-    } else {
-        // Fallback for browsers not supporting protocolHandler
-        window.location.href = spotifyWebUrl;
+        const remainingCalories = allowedCalories - parseInt(entry);
+        document.getElementById("output").textContent = `You are currently allowed to consume ${remainingCalories} calories.`;
+        allowedCalories = remainingCalories;
     }
-}
-
-
-        function openAppleMusic() {
-            // Try to open Apple Music app first, if not available, open the web link
-            window.location.href = 'music://music.apple.com/us/playlist/the-gainz-ultimate-gym-playlist/pl.u-MDAWvJjFWEXdEY';
-            setTimeout(function() {
-                window.location.href = 'https://music.apple.com/us/playlist/the-gainz-ultimate-gym-playlist/pl.u-MDAWvJjFWEXdEY';
-            }, 100);
-        }
-
-        function surpriseMe() {
-            var randomTerms = ["Upper Body Exercise", "Lower Body Exercise", "Cardio Workout", "HIIT Workout", "Functional Training", "Flexibility Exercise", "CrossFit Workout", "Bodyweight Training", "Group Fitness Class", "Sport-Specific Training", "Recovery Workout"];
-            var randomIndex = Math.floor(Math.random() * randomTerms.length);
-            var searchUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(randomTerms[randomIndex]);
-            
-            // Check if the user is using a browser
-            if (window.navigator.standalone === false || window.matchMedia('(display-mode: browser)').matches) {
-                // Open the search results in a new tab
-                window.open(searchUrl, '_blank');
-            } else {
-                // Open the search results in the same tab (for app)
-                window.location.href = searchUrl;
-            }
-        }
-    </script>
+</script>
 </body>
 </html>
