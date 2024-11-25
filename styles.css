@@ -1,0 +1,206 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack hero and other sections vertically */
+    height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    color: #000;
+    margin-bottom: 50px; /* Add spacing for the section below */
+}
+
+/* Title Styling with Animation */
+.hero-title {
+    font-family: 'Playfair Display', serif; /* Elegant font */
+    font-size: 10rem; /* Title size */
+    font-weight: normal;
+    margin-bottom: 20px;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInUp 1s ease-in-out forwards; /* Fade-in and slide-up animation */
+}
+
+/* CTA Button */
+.cta-button {
+    padding: 15px 30px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 30px;
+}
+
+.cta-button:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+/* Countdown Timer */
+.countdown {
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.tile {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    width: 80px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tile span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.tile p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Reminder Section */
+.reminder-section {
+    text-align: center;
+    margin-top: 30px; /* Space between countdown and reminder section */
+}
+
+.email-reminder {
+    display: inline-flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.email-reminder input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+}
+
+.email-reminder button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.email-reminder button:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons .social-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 0; /* Adjust to 50% if you want circular icons */
+    transition: transform 0.3s ease;
+}
+
+.social-icons .social-icon img:hover {
+    transform: scale(1.1);
+}
+
+/* Keyframes for Title Animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Slide up from 20px below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Final position */
+    }
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+    body {
+        height: auto; /* Allow scrolling for content */
+        padding: 20px;
+    }
+
+    .hero-title {
+        font-size: 6rem; /* Reduce title size */
+    }
+
+    .cta-button {
+        font-size: 1rem;
+        padding: 10px 20px; /* Adjust padding */
+    }
+
+    .countdown {
+        flex-direction: column; /* Stack tiles vertically */
+        gap: 10px;
+    }
+
+    .tile {
+        width: 60px; /* Adjust tile size */
+        height: 80px;
+    }
+
+    .tile span {
+        font-size: 1.5rem; /* Adjust font size in tiles */
+    }
+
+    .tile p {
+        font-size: 0.8rem;
+    }
+
+    .email-reminder {
+        flex-direction: column; /* Stack input and button vertically */
+        gap: 10px;
+    }
+
+    .email-reminder input {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    .social-icons {
+        gap: 10px; /* Reduce gap between icons */
+    }
+
+    .social-icons .social-icon img {
+        width: 30px; /* Adjust icon size */
+        height: 30px;
+    }
+}
