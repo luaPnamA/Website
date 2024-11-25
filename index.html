@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lhire Clothing Ltd - Trendy and Stylish Clothing for Everyone">
+    <meta name="author" content="Lhire Clothing Ltd">
+    <meta name="keywords" content="Lhire Clothing, fashion, trendy clothing, online clothing store">
+    <title>Lhire Clothing Ltd</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Hero Section -->
+    <div class="hero">
+        <h1 class="hero-title">Lhire Clothing</h1>
+        <!-- <a href="home.html" class="cta-button">Live The Experience</a> --->
+        
+        <!-- Countdown Timer -->
+        <div class="countdown">
+            <div class="tile">
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+            <div class="tile">
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+            <div class="tile">
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+            <div class="tile">
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Section for Email Reminder and Social Media -->
+    <div class="reminder-section">
+        <!-- Email Reminder Input -->
+        <form class="email-reminder">
+            <input type="email" placeholder="Get Emailed On Launch Day" required>
+            <button type="submit">Join</button>
+        </form>
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.tiktok.com/@lhireclothingltd" class="social-icon" aria-label="TikTok">
+                <img src="tik-tok.png" alt="TikTok Icon">
+            </a>
+            <a href="https://www.instagram.com/lhire.clothingltd/#" class="social-icon" aria-label="Instagram">
+                <img src="instagram.png" alt="Instagram Icon">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer Script
+        const countdownDate = new Date("2025-02-01T00:00:00").getTime(); // Fixed date: February 1, 2025
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = countdownDate - now;
+
+            if (timeLeft > 0) {
+                // Time calculations for days, hours, minutes, and seconds
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                // Update the tiles with calculated values
+                document.getElementById("days").textContent = days;
+                document.getElementById("hours").textContent = hours;
+                document.getElementById("minutes").textContent = minutes;
+                document.getElementById("seconds").textContent = seconds;
+            } else {
+                // When the countdown is finished
+                document.querySelector(".countdown").innerHTML = "<p>We have launched!</p>";
+            }
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
